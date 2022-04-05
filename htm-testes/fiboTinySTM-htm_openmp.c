@@ -26,12 +26,13 @@ void fib(int n, int *r) {
     else{
 	#pragma omp atomic
         aborted++;
+	printf("f");
         fib(n, r);
     }
 
   }
   else {
-    #pragma omp task 
+    //#pragma omp task 
      fib(n-1,r);
     //#pragma omp task 
      fib(n-2,r);
