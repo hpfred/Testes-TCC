@@ -1,7 +1,7 @@
 #include <omp.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "stm.h"
+//#include "stm.h"
 
 #include <immintrin.h>
 #include <rtmintrin.h>
