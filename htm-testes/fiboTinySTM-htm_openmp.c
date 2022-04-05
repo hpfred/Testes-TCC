@@ -24,6 +24,7 @@ void fib(int n, int *r) {
         _xend();
     }
     else{
+	#pragma omp atomic
         aborted++;
         fib(n, r);
     }
@@ -32,7 +33,7 @@ void fib(int n, int *r) {
   else {
     #pragma omp task 
      fib(n-1,r);
-    #pragma omp task 
+    //#pragma omp task 
      fib(n-2,r);
     #pragma omp taskwait
   }
@@ -58,7 +59,8 @@ int main( int argc, char **argv ) {
  }
 
  printf("%f\n", omp_get_wtime()-start); 
- // printf("fibo(%d) = %d\n", n, r );
+ printf("fibo(%d) = %d\n", n, r );
+printf("Abortos: %d\n",aborted);
 
  return 0;
 }
